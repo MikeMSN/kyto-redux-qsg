@@ -1,4 +1,4 @@
-import {ASYNC_INCREMENT, DECREMENT, INCREMENT} from "./types";
+import {ASYNC_INCREMENT, CHANGE_THEM, DECREMENT, INCREMENT} from "./types";
 
 export function increment() {
     return {
