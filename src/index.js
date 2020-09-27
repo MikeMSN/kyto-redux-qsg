@@ -6,6 +6,7 @@ import {decrement} from "./redux/actions";
 import {asyncIncrement} from "./redux/actions";
 import thunk from "redux-thunk";
 import {logger} from "redux-logger";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 const counter = document.getElementById('counter')
 const addButton = document.getElementById('add')
@@ -17,9 +18,7 @@ const themeButton = document.getElementById('theme')
 
 const store = createStore(
     rootReducer,
-    compose(
-    applyMiddleware(thunk, logger),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    composeWithDevTools(applyMiddleware(thunk, logger))
 )
 
 
