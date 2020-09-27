@@ -42,7 +42,10 @@ themeButton.addEventListener('click', () => {
 store.subscribe(() => {
     const state = store.getState();
     counter.textContent = state.counter;
-    document.body.className = state.theme.value
+    document.body.className = state.theme.value;
+
+    [addButton, subButton, themeButton, asyncButton]
+        .forEach(btn => btn.disabled = state.theme.disabled)
 })
 
 store.dispatch({type: 'INIT_APPLICATION'});
