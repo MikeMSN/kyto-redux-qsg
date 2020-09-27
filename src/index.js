@@ -5,6 +5,7 @@ import {increment} from "./redux/actions";
 import {decrement} from "./redux/actions";
 import {asyncIncrement} from "./redux/actions";
 import thunk from "redux-thunk";
+import {logger} from "redux-logger";
 
 const counter = document.getElementById('counter')
 const addButton = document.getElementById('add')
@@ -13,17 +14,6 @@ const asyncButton = document.getElementById('async')
 const themeButton = document.getElementById('theme')
 
 
-function logger(state) {
-    return function (next) {
-        return function (action) {
-            console.log('Prev State', state.getState());
-            console.log('Action', action);
-            const newState = next(action)
-            console.log('New State', state.getState());
-            return newState;
-        }
-    }
-}
 
 const store = createStore(rootReducer, 0,
     applyMiddleware(thunk, logger))
