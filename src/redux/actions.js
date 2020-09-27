@@ -14,9 +14,7 @@ export function decrement() {
 
 export function asyncIncrement() {
     return function (dispatch) {
-        setTimeout(
-            dispatch(increment()), 1500)
-
+        setTimeout(dispatch(increment()), 1500);
     }
 
 }

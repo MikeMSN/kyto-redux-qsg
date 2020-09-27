@@ -12,8 +12,21 @@ const subButton = document.getElementById('sub')
 const asyncButton = document.getElementById('async')
 const themeButton = document.getElementById('theme')
 
+
+function logger(state) {
+    return function (next) {
+        return function (action) {
+            console.log('Prev State', state.getState());
+            console.log('Action', action);
+            const newState = next(action)
+            console.log('New State', state.getState());
+            return newState;
+        }
+    }
+}
+
 const store = createStore(rootReducer, 0,
-    applyMiddleware(thunk))
+    applyMiddleware(thunk, logger))
 
 
 addButton.addEventListener('click', () => {
