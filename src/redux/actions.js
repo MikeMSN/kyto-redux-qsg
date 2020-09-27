@@ -1,13 +1,22 @@
-import {DECREMENT, INCREMENT} from "./types";
+import {ASYNC_INCREMENT, DECREMENT, INCREMENT} from "./types";
 
-export default function increment() {
+export function increment() {
     return {
         type: INCREMENT
     }
 }
 
-export default function decrement() {
+export function decrement() {
     return {
         type: DECREMENT
     }
+}
+
+export function asyncIncrement() {
+    return function (dispatch) {
+        setTimeout(
+            dispatch(increment()), 1500)
+
+    }
+
 }
